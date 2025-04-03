@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const mobilePrevBtn = document.getElementById("mobilePrev");
     const mobileNextBtn = document.getElementById("mobileNext");
     const progressBar = document.getElementById("progress");
-    const progressContainer = document.querySelector(".progress-container");
+    const progressContainer = document.querySelector(".progress-bar-container");
     const background = document.createElement("div");
     
     background.classList.add("background");
@@ -40,6 +40,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         
         playPauseBtn.innerHTML = playPauseIcon;
         mobilePlayPauseBtn.innerHTML = playPauseIcon;
+        
+        document.getElementById('currentTime').textContent = "0:00";
+        document.getElementById('duration').textContent = "0:00";
     }
 
     function togglePlay() {
@@ -51,7 +54,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     function updateProgress() {
-        progressBar.style.width = (audio.currentTime / audio.duration) * 100 + "%";
+        const progressPercent = (audio.currentTime / audio.duration) * 100;
+        progressBar.style.width = progressPercent + "%";
+        document.getElementById('currentTime').textContent = formatTime(audio.currentTime);
+    }
+
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
     }
 
     function seekTo(event) {
@@ -91,6 +102,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     audio.addEventListener("timeupdate", updateProgress);
     
+    audio.addEventListener('loadedmetadata', function() {
+        document.getElementById('duration').textContent = formatTime(audio.duration);
+    });
+
     playPauseBtn.addEventListener("click", togglePlay);
     mobilePlayPauseBtn.addEventListener("click", togglePlay);
     
