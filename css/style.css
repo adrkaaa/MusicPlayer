@@ -1,0 +1,186 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #121212;
+    color: white;
+    font-family: Arial, sans-serif;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(15px);
+    z-index: -1;
+    transition: background 0.5s ease;
+}
+
+.player {
+    width: 90%;
+    max-width: 320px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding-bottom: 80px;
+}
+
+.cover {
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+.desktop-controls {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.cover:hover .desktop-controls {
+    opacity: 1;
+}
+
+.cover:hover #cover {
+    filter: blur(1px);
+    transition: 0.5s ease;
+}
+
+.mobile-controls {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    gap: 30px;
+    padding: 15px;
+    backdrop-filter: blur(5px);
+    z-index: 10;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+button img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.2s;
+}
+
+button:hover img {
+    transform: scale(1.1);
+}
+
+.info {
+    margin-top: 10px;
+    padding: 0 10px;
+}
+
+.info h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.info p {
+    font-size: 1rem;
+    margin: 5px 0 0;
+    color: #aaa;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.progress-container {
+    width: 100%;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: white;
+    transition: width 0.2s ease;
+}
+
+@media (max-width: 768px) {
+    .player {
+        width: 95%;
+        padding-bottom: 100px;
+    }
+    
+    .mobile-controls {
+        display: flex;
+    }
+    
+    .desktop-controls {
+        display: none;
+    }
+    
+    button img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .info h3 {
+        font-size: 1.4rem;
+    }
+    
+    .info p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .player {
+        padding-bottom: 90px;
+    }
+    
+    button img {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .mobile-controls {
+        gap: 25px;
+        padding: 10px;
+    }
+}

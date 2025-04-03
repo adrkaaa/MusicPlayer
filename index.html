@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="player">
+        <div class="cover">
+            <img id="cover" src="img/cover1.jpg" alt="Обложка">
+            <div class="controls desktop-controls">
+                <button id="prev">
+                    <img src="img/prev.svg" alt="Prev">
+                </button>
+                <button id="playPause">
+                    <img src="img/play.svg" alt="Play">
+                </button>
+                <button id="next">
+                    <img src="img/next.svg" alt="Next">
+                </button>
+            </div>
+        </div>
+        <div class="info">
+            <h3 id="title">Загрузка...</h3>
+            <p id="artist"></p>
+        </div>
+        <div class="progress-container">
+            <div class="progress-bar" id="progress"></div>
+        </div>
+        <div class="mobile-controls">
+            <button id="mobilePrev">
+                <img src="img/prev.svg" alt="Prev">
+            </button>
+            <button id="mobilePlayPause">
+                <img src="img/play.svg" alt="Play">
+            </button>
+            <button id="mobileNext">
+                <img src="img/next.svg" alt="Next">
+            </button>
+        </div>
+    </div>
+    
+    <audio id="audio"></audio>
+    
+    <script src="script/player.js"></script>
+</body>
+</html>
