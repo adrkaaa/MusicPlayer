@@ -35,8 +35,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         background.style.backgroundImage = `url(${track.cover})`;
         
         const playPauseIcon = isPlaying 
-            ? '<img src="img/pause.svg" alt="Pause">' 
-            : '<img src="img/play.svg" alt="Play">';
+            ? '<img src="img/icon/pause.svg" alt="Pause">' 
+            : '<img src="img/icon/play.svg" alt="Play">';
         
         playPauseBtn.innerHTML = playPauseIcon;
         mobilePlayPauseBtn.innerHTML = playPauseIcon;
@@ -88,14 +88,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     audio.addEventListener("play", () => {
         isPlaying = true;
-        const icon = '<img src="img/pause.svg" alt="Pause">';
+        const icon = '<img src="img/icon/pause.svg" alt="Pause">';
         playPauseBtn.innerHTML = icon;
         mobilePlayPauseBtn.innerHTML = icon;
     });
 
     audio.addEventListener("pause", () => {
         isPlaying = false;
-        const icon = '<img src="img/play.svg" alt="Play">';
+        const icon = '<img src="img/icon/play.svg" alt="Play">';
         playPauseBtn.innerHTML = icon;
         mobilePlayPauseBtn.innerHTML = icon;
     });
